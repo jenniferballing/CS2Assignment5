@@ -91,6 +91,14 @@ void Report(Geometry *GArr[], double SArr[], double VArr[], int size)
     int indArr[6];
     int i=0, j=0, k=0;
     double AveS, AveV, MedS, MedV;
+
+    cout<<"OBJECTS STORED IN GEOMETRY ARRAY: "<<endl;
+    for(i=0; i<size; i++)
+    {
+        Geometry *levi=GArr[i];
+        image(levi);
+    }
+    cout<<endl<<endl;
     
     for(i=0; i<size;i++)
     {
@@ -132,10 +140,10 @@ void Report(Geometry *GArr[], double SArr[], double VArr[], int size)
 
 
     cout<<"STATISTICS: "<<endl;
-    cout<<"Average Surface Area: "<<AveS<<endl;
-    cout<<"Average Volume: "<<AveV<<endl;
-    cout<<"Median Surface Area: "<<MedS<<endl;
-    cout<<"Median Volume: "<<MedV<<endl;
+    cout<<fixed<<setprecision(1)<<"Average Surface Area: "<<AveS<<endl;
+    cout<<fixed<<setprecision(1)<<"Average Volume: "<<AveV<<endl;
+    cout<<fixed<<setprecision(1)<<"Median Surface Area: "<<MedS<<endl;
+    cout<<fixed<<setprecision(1)<<"Median Volume: "<<MedV<<endl;
 }
 double findAverage(double Arr[], int size)
 {
