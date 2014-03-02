@@ -16,17 +16,15 @@
 
 using namespace std;
 
-void report(Geometry *obj);
+void image(Geometry *obj);
 void Sort (double [], int[], int size);
-void getSur(Geometry* [], double [], int size);
+void Report(Geometry* [], double [], double [], int size);
+double findAverage(double Arr[], int size);
+double findMedian(double Arr[], int size);
 int main()
 {
     //CHECKING THE MATH AND REPORT FUNCTION
     Box a(5, 5, 5, "Boxy");
-    Geometry *aptr=&a;
-    report (aptr);
-    
-
     rectangle b(5, 5, "Rectangley");
     Sphere c(5,"Spherey");    
     Circle d(5,"Circley");    
@@ -58,13 +56,11 @@ int main()
     VArr[4]=e.ComputeVolume();
     VArr[5]=f.ComputeVolume();
 
-    getSur(Arr, SArr, 6);
-
-    
+    Report(Arr, SArr, VArr, 6);
           
     return 0;
 }
-void report(Geometry *obj)
+void image(Geometry *obj)
 {
     cout<<"----- Geometry Report -----"<<endl;
     cout<< "Type: "<<obj->getType()<<endl;
@@ -75,12 +71,7 @@ void report(Geometry *obj)
 void Sort (double Arr[], int index[], int size)
 {
     //Ascending order
-    int i, j, min;
-    for(i=0; i<size; i++)
-    {
-        cout<< "Value: "<<Arr[i]<<" Index: "<<index[i]<<endl;
-    }
-
+    int i, j;
     for(i=0; i<size-1; i++)
     {
         for(j=i+1; j<size; j++)
@@ -92,40 +83,94 @@ void Sort (double Arr[], int index[], int size)
             }
         }
     }
-    for(min=0; min<size; min++)
-    {
-        cout<< Arr[min]<<index[min]<<endl;
-    }
 }
-
-void getSur(Geometry *GArr[], double Arr[], int size)//add size as parameter
+void Report(Geometry *GArr[], double SArr[], double VArr[], int size)
 {
-    //cout<<"Checking Garr surface: "<<*GArr[0].ComputeSurface()<<endl;
     double surArr[6];
+    double volArr[6];
     int indArr[6];
-    int i=0, j=0;
+    int i=0, j=0, k=0;
+    double AveS, AveV, MedS, MedV;
     
-    for(int i=0; i<size;i++)
+    for(i=0; i<size;i++)
     {
-        surArr[i]=Arr[i];
+        surArr[i]=SArr[i];
         indArr[i]=i;
     }
+
     Sort(surArr, indArr, size);
-    /*Geometry *a=GArr[0];
-    Geometry *b=GArr[1];
-    Geometry *c=GArr[2];
-    Geometry *d=GArr[3];
-    Geometry *e=GArr[4];
-    Geometry *b=GArr[5];*/
-
-    for(int i=0; i<6; i++)
+    cout<<"SORT BY SURFACE: "<<endl;
+    cout<<"Descending order"<<endl<<endl;
+    for(j=5; j>=0; j--)
     {
-        int x=indArr[i];
+        int x=indArr[j];
         Geometry *temp=GArr[x];
-        report(temp);
-    }   
-}
+        image(temp);
+    } 
+    cout<<endl<<endl;
+    AveS=findAverage(surArr, size);
+    MedS=findMedian(surArr, size);
 
+    for(i=0; i<size;i++)
+    {
+        volArr[i]=VArr[i];
+        indArr[i]=i;
+    }
+
+    Sort(volArr, indArr, size);
+    cout<<"SORT BY VOLUME: "<<endl;
+    cout<<"Ascending"<<endl<<endl;
+    for(k=0; k<size; k++)
+    {
+        int y=indArr[k];
+        Geometry *temp=GArr[y];
+        image(temp);
+    }
+    cout<<endl<<endl;
+    AveV=findAverage(volArr, size);
+    MedV=findMedian(volArr, size);
+
+
+    cout<<"STATISTICS: "<<endl;
+    cout<<"Average Surface Area: "<<AveS<<endl;
+    cout<<"Average Volume: "<<AveV<<endl;
+    cout<<"Median Surface Area: "<<MedS<<endl;
+    cout<<"Median Volume: "<<MedV<<endl;
+}
+double findAverage(double Arr[], int size)
+{
+    double sum=0;
+    int i;
+    for(i=0; i<size; i++)
+    {
+        sum+=Arr[i];
+    }
+    double ave= sum/size;
+    return ave;
+}
+double findMedian(double Arr[], int size)
+{
+    double med=0;
+    int ind[6]; 
+    int i;
+    for(i=0; i<size; i++)
+    {
+        ind[i]=i;
+    }
+    Sort(Arr,ind, size);
+    if(size%2==0)
+    {
+        double first = Arr[size/2];
+        double second= Arr[size/2+1];
+        first+=second;
+        med= first/2;
+    }
+    else 
+    {
+        med=Arr[size/2];
+    }
+    return med;
+}
 
 
 
