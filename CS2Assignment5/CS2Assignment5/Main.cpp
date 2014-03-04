@@ -8,8 +8,7 @@
 #include "Square.h"
 #include "Sphere.h"
 #include "Circle.h"
-//3D objects are inheriting 2D objects
-//Members in Geometry should be protected
+
 //Constructors that go with pointers in base class
 //Getters in base class and others. 
 //Create protected function to change the name in Geometry
@@ -28,7 +27,6 @@ int main()
     int i;
     double SArr[SIZE];
     double VArr[SIZE];
-    //CHECKING THE MATH AND REPORT FUNCTION
     Geometry *array[SIZE]; 
  
     array[0] = new Box (3, 4, 5, "Boxy");
@@ -59,7 +57,10 @@ int main()
     string jtype= j->getType();
     cout<<"Copy of sphere: "<< jname<<" " <<jtype<<" "<<jsur<<endl;
         
-    //delete [] array;
+    for(i=0; i<SIZE; i++)
+    {
+        delete array[i];
+    }
     
     return 0;
 }

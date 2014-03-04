@@ -45,5 +45,4 @@ double Geometry::ComputeSurface()
 }
 Geometry::~Geometry(void)
 {
-    delete this;
 }
