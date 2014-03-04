@@ -7,7 +7,7 @@ Cube::Cube(void)
     Type="Cube";
 }
 
-Cube::Cube(double s, char*n):Square(s, n)
+Cube::Cube(char*n, double s):Square(n, s)
 {
     Type="Cube";
 }

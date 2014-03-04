@@ -6,7 +6,7 @@ rectangle::rectangle(void)
     Width=0;
     Type="Rectangle";
 }
-rectangle::rectangle(double l, double w, char* n):Geometry(n, "Rectangle")
+rectangle::rectangle(char* n, double l, double w):Geometry(n, "Rectangle")
 {
     Type="Rectangle";
     Length=l;

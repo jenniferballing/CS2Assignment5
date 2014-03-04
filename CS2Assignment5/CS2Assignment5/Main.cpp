@@ -29,12 +29,12 @@ int main()
     double VArr[SIZE];
     Geometry *array[SIZE]; 
  
-    array[0] = new Box (3, 4, 5, "Boxy");
-    array[1] = new rectangle (2, 6, "Rectangley");
-    array[2] = new Sphere (5,"Spherey");    
-    array[3] = new Circle (2,"Circley");    
-    array[4] = new Cube (7,"Cubey");    
-    array[5] = new Square (4,"Squarey");
+    array[0] = new Box ("Boxy", 3, 4, 5);
+    array[1] = new rectangle ("Rectangley", 2, 6);
+    array[2] = new Sphere ("Spherey", 5);    
+    array[3] = new Circle ("Circley", 2);    
+    array[4] = new Cube ("Cubey", 7);    
+    array[5] = new Square ("Squarey", 4);
 
     for(i=0; i<SIZE; i++)
     {
@@ -50,13 +50,27 @@ int main()
 
     Calculations(array, SArr, VArr, SIZE);
 
-    //COPY CONSTRUCTOR and ASSIGNMENT OPERATOR WORK IN DERIVED CLASSES
-    Geometry* j(array[2]);
-    double jsur= j->ComputeSurface();
-    string jname= j->getName();
-    string jtype= j->getType();
-    cout<<"Copy of sphere: "<< jname<<" " <<jtype<<" "<<jsur<<endl;
-        
+    //COPY CONSTRUCTOR and ASSIGNMENT OPERATOR FROM DERIVED CLASSES
+    cout<<endl;
+    cout<<"DRIVER TO SHOW COPY CONSTRUCTOR AND ASSIGNMENT OPERATOR:"<<endl;
+    for(i=0; i<SIZE; i++)
+    {
+        Geometry* j(array[i]);
+        Geometry* k= array[i];
+        string jname= j->getName();
+        string jtype= j->getType();
+        double jsur= j->ComputeSurface();
+        double jvol= j->ComputeVolume();
+        string kname= k->getName();
+        string ktype= k->getType();
+        double ksur= k->ComputeSurface();
+        double kvol= k->ComputeVolume();
+        cout<< "Object created with copy constructor: "<<endl;
+        cout<<"Name: "<<jname<<" Type: " <<jtype<<" Surface Area: "<<jsur<<" Volume: "<< jvol<<endl;
+        cout<< "Object assigned with overloaded assignment operator: "<<endl;
+        cout<<"Name: "<<kname<<" Type: " <<ktype<<" Surface Area: "<<ksur<<" Volume: "<< kvol<<endl<<endl;
+    }
+    
     for(i=0; i<SIZE; i++)
     {
         delete array[i];

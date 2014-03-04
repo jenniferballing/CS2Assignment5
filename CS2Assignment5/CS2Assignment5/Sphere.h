@@ -8,7 +8,7 @@ class Sphere: public Circle
 {
 public:
     Sphere(void);
-    Sphere(double, char*);
+    Sphere(char*, double);
     double ComputeVolume();
     double ComputeSurface();
     ~Sphere(void);

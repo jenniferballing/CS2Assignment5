@@ -8,7 +8,7 @@ Box::Box(void)
     Width=0;
     Height=0;
 }
-Box::Box(double l,double w, double h, char* n):rectangle(l, w, n)
+Box::Box(char* n, double l,double w, double h):rectangle(n, l, w)
 {
     Type="Box";
     Height=h;

@@ -8,7 +8,7 @@ Sphere::Sphere(void)
     Radius=0;
     Type="Sphere";
 }
-Sphere::Sphere(double r, char* n):Circle(r, n)
+Sphere::Sphere(char* n, double r):Circle(n, r)
 {
     Type="Sphere";
 }

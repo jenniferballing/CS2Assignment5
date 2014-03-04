@@ -8,7 +8,7 @@ class Cube:public Square
 {
 public:
     Cube(void);
-    Cube(double, char*);
+    Cube(char*, double);
     double getSide();
     double ComputeVolume();
     double ComputeSurface();

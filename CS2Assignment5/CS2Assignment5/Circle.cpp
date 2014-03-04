@@ -7,7 +7,7 @@ Circle::Circle(void)
     Radius=0;
     Type="Circle";
 }
-Circle::Circle(double r, char* n):Geometry(n)
+Circle::Circle(char* n, double r):Geometry(n)
 {
     Type="Circle";
     Radius=r;

@@ -4,7 +4,7 @@ Square::Square(void)
 {
     Type="Square";
 }
-Square::Square(double s, char* n):Geometry(n)
+Square::Square(char* n, double s):Geometry(n)
 {
     Type="Square";
     Side=s;

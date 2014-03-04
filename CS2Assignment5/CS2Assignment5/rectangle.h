@@ -12,7 +12,7 @@ protected:
 public:
     rectangle(void);
     rectangle (double, double);
-    rectangle(double, double, char*);
+    rectangle(char*, double, double);
     double ComputeVolume();
     double ComputeSurface();
     ~rectangle(void);

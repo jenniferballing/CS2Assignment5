@@ -9,9 +9,7 @@ class Box:public rectangle
    double Height;
 public:
     Box(void);
-    Box(double, double, double, char*);
-    //Box( const Box &obj);
-    //Box operator=(const Box &obj);
+    Box( char*, double, double, double);
     double ComputeVolume();
     double ComputeSurface();
     ~Box(void);

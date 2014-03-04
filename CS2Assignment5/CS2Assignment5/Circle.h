@@ -11,7 +11,7 @@ protected:
 public:
     Circle(void);
     Circle(double);
-    Circle(double, char*);
+    Circle(char*, double);
     double getRadius();
     double ComputeVolume();
     double ComputeSurface();

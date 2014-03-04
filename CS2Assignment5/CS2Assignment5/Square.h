@@ -11,7 +11,7 @@ protected:
 public:
     Square(void);
     Square(double);
-    Square(double, char*);
+    Square(char*, double);
     double ComputeVolume();
     double ComputeSurface();
     ~Square(void);
