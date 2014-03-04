@@ -25,7 +25,11 @@ double findMedian(double Arr[], int size);
 int main()
 {
     const int SIZE = 6;
+<<<<<<< HEAD
     int i;
+=======
+    int anyKey, i;
+>>>>>>> 0a0927e535dc8acaf63dfc6e7b031f8f77b1d67a
     double SArr[SIZE];
     double VArr[SIZE];
     //CHECKING THE MATH AND REPORT FUNCTION
@@ -58,8 +62,14 @@ int main()
     string jname= j->getName();
     string jtype= j->getType();
     cout<<"Copy of sphere: "<< jname<<" " <<jtype<<" "<<jsur<<endl;
+<<<<<<< HEAD
         
     delete [] array;
+=======
+          
+    cout<<"Press any key to continue: "<<endl;
+    cin>>anyKey;
+>>>>>>> 0a0927e535dc8acaf63dfc6e7b031f8f77b1d67a
     
     return 0;
 }
