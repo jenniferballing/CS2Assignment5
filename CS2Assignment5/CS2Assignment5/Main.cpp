@@ -16,51 +16,54 @@
 
 using namespace std;
 
-void image(Geometry *obj);
+void report(Geometry *obj);
 void Sort (double [], int[], int size);
-void Report(Geometry* [], double [], double [], int size);
+void Calculations(Geometry* [], double [], double [], int size);
 double findAverage(double Arr[], int size);
 double findMedian(double Arr[], int size);
+
 int main()
 {
+    const int SIZE = 6;
+    int i;
+    double SArr[SIZE];
+    double VArr[SIZE];
     //CHECKING THE MATH AND REPORT FUNCTION
-    Box a(5, 5, 5, "Boxy");
-    rectangle b(5, 5, "Rectangley");
-    Sphere c(5,"Spherey");    
-    Circle d(5,"Circley");    
-    Cube e(5,"Cubey");    
-    Square f(5,"Squarey");
+    Geometry *array[SIZE]; 
+ 
+    array[0] = new Box (3, 4, 5, "Boxy");
+    array[1] = new rectangle (2, 6, "Rectangley");
+    array[2] = new Sphere (5,"Spherey");    
+    array[3] = new Circle (2,"Circley");    
+    array[4] = new Cube (7,"Cubey");    
+    array[5] = new Square (4,"Squarey");
 
-    Geometry *Arr[6];
-    Arr[0]=&a;
-    Arr[1]=&b;
-    Arr[2]=&c;
-    Arr[3]=&d;
-    Arr[4]=&e;
-    Arr[5]=&f;
+    for(i=0; i<SIZE; i++)
+    {
+        report(array[i]);
+        cout<<endl;
+    }
+    for(i=0; i<SIZE; i++)
+    {
+        
+        SArr[i]=array[i]->ComputeSurface();
+        VArr[i]=array[i]->ComputeVolume();
+    }
 
+    Calculations(array, SArr, VArr, SIZE);
 
-    double SArr[6];
-    SArr[0]=a.ComputeSurface();
-    SArr[1]=b.ComputeSurface();
-    SArr[2]=c.ComputeSurface();
-    SArr[3]=d.ComputeSurface();
-    SArr[4]=e.ComputeSurface();
-    SArr[5]=f.ComputeSurface();
-
-    double VArr[6];
-    VArr[0]=a.ComputeVolume();
-    VArr[1]=b.ComputeVolume();
-    VArr[2]=c.ComputeVolume();
-    VArr[3]=d.ComputeVolume();
-    VArr[4]=e.ComputeVolume();
-    VArr[5]=f.ComputeVolume();
-
-    Report(Arr, SArr, VArr, 6);
-          
+    //COPY CONSTRUCTOR and ASSIGNMENT OPERATOR WORK IN DERIVED CLASSES
+    Geometry* j(array[2]);
+    double jsur= j->ComputeSurface();
+    string jname= j->getName();
+    string jtype= j->getType();
+    cout<<"Copy of sphere: "<< jname<<" " <<jtype<<" "<<jsur<<endl;
+        
+    delete [] array;
+    
     return 0;
 }
-void image(Geometry *obj)
+void report(Geometry *obj)
 {
     cout<<"----- Geometry Report -----"<<endl;
     cout<< "Type: "<<obj->getType()<<endl;
@@ -84,21 +87,13 @@ void Sort (double Arr[], int index[], int size)
         }
     }
 }
-void Report(Geometry *GArr[], double SArr[], double VArr[], int size)
+void Calculations(Geometry *GArr[], double SArr[], double VArr[], int size)
 {
-    double surArr[6];
-    double volArr[6];
-    int indArr[6];
+    double surArr[50];
+    double volArr[50];
+    int indArr[50];
     int i=0, j=0, k=0;
     double AveS, AveV, MedS, MedV;
-
-    cout<<"OBJECTS STORED IN GEOMETRY ARRAY: "<<endl;
-    for(i=0; i<size; i++)
-    {
-        Geometry *levi=GArr[i];
-        image(levi);
-    }
-    cout<<endl<<endl;
     
     for(i=0; i<size;i++)
     {
@@ -113,7 +108,7 @@ void Report(Geometry *GArr[], double SArr[], double VArr[], int size)
     {
         int x=indArr[j];
         Geometry *temp=GArr[x];
-        image(temp);
+        report(temp);
     } 
     cout<<endl<<endl;
     AveS=findAverage(surArr, size);
@@ -132,7 +127,7 @@ void Report(Geometry *GArr[], double SArr[], double VArr[], int size)
     {
         int y=indArr[k];
         Geometry *temp=GArr[y];
-        image(temp);
+        report(temp);
     }
     cout<<endl<<endl;
     AveV=findAverage(volArr, size);
@@ -159,7 +154,7 @@ double findAverage(double Arr[], int size)
 double findMedian(double Arr[], int size)
 {
     double med=0;
-    int ind[6]; 
+    int ind[50]; 
     int i;
     for(i=0; i<size; i++)
     {
@@ -169,7 +164,7 @@ double findMedian(double Arr[], int size)
     if(size%2==0)
     {
         double first = Arr[size/2];
-        double second= Arr[size/2+1];
+        double second= Arr[size/2-1];
         first+=second;
         med= first/2;
     }

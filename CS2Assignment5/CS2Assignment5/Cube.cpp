@@ -11,6 +11,10 @@ Cube::Cube(double s, char*n):Square(s, n)
 {
     Type="Cube";
 }
+double Cube::getSide()
+{
+    return Side;
+}
 double Cube::ComputeVolume()
 {
     double volume= Side*Side*Side;

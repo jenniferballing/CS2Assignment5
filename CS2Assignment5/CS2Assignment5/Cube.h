@@ -9,6 +9,7 @@ class Cube:public Square
 public:
     Cube(void);
     Cube(double, char*);
+    double getSide();
     double ComputeVolume();
     double ComputeSurface();
     ~Cube(void);

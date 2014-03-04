@@ -8,7 +8,6 @@ protected:
 
     void setType(char* t)
     {
-        delete Type;
         Type=t;
     }
 

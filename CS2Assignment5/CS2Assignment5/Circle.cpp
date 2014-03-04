@@ -12,6 +12,10 @@ Circle::Circle(double r, char* n):Geometry(n)
     Type="Circle";
     Radius=r;
 }
+double Circle::getRadius()
+{
+    return Radius;
+}
 Circle::Circle(double r)
 {
     Type="Circle";
