@@ -28,4 +28,5 @@ double Cube::ComputeSurface()
 
 Cube::~Cube(void)
 {
+    delete this;
 }

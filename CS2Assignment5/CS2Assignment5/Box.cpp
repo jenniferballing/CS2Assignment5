@@ -24,19 +24,8 @@ double Box::ComputeSurface()
     double upDown=(Length*Height)*2;
     return frontBack+Sides+upDown;
 }
-/*Box::Box(const Box &obj)
-{
-    Name=obj.Name;
-    Type=obj.Type;
-}
-Box::Box operator=(const Box &obj)
-{
-    Name=obj.Name;
-    Type=obj.Type;
-
-    return *this;
-}*/
 
 Box::~Box(void)
 {
+    delete this;
 }

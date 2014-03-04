@@ -24,4 +24,5 @@ double Sphere::ComputeSurface()
 }
 Sphere::~Sphere(void)
 {
+    delete this;
 }

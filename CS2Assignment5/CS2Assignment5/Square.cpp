@@ -26,4 +26,5 @@ double Square::ComputeSurface()
 
 Square::~Square(void)
 {
+    delete this;
 }

@@ -59,7 +59,7 @@ int main()
     string jtype= j->getType();
     cout<<"Copy of sphere: "<< jname<<" " <<jtype<<" "<<jsur<<endl;
         
-    delete [] array;
+    //delete [] array;
     
     return 0;
 }

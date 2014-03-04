@@ -32,4 +32,5 @@ double Circle::ComputeSurface()
 }
 Circle::~Circle(void)
 {
+    delete this;
 }

@@ -29,4 +29,5 @@ double rectangle::ComputeSurface()
 
 rectangle::~rectangle(void)
 {
+    delete this;
 }
