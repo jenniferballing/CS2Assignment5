@@ -10,6 +10,8 @@ class Box:public rectangle
 public:
     Box(void);
     Box(double, double, double, char*);
+    //Box( const Box &obj);
+    //Box operator=(const Box &obj);
     double ComputeVolume();
     double ComputeSurface();
     ~Box(void);

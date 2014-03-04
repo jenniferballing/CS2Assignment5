@@ -12,6 +12,7 @@ public:
     Circle(void);
     Circle(double);
     Circle(double, char*);
+    double getRadius();
     double ComputeVolume();
     double ComputeSurface();
     ~Circle(void);

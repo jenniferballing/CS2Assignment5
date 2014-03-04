@@ -14,7 +14,8 @@ Sphere::Sphere(double r, char* n):Circle(r, n)
 }
 double Sphere::ComputeVolume()
 {
-    double volume=(4/3)*M_PI*(Radius*Radius*Radius);
+    double frac= 4.0/3.0;
+    double volume=M_PI*(Radius*Radius*Radius)*frac;
     return volume;
 }
 double Sphere::ComputeSurface()
